@@ -6,9 +6,21 @@ const routes = express.Router();
 const tasks = require('./tasksData.json');
 const Files = require('./libs/files');
 const Validator = require('./libs/validator');
+const DataOps = require('./libs/dataOps');
 
 routes.get('/', (req, res) => {
-    res.status(200).send(tasks);
+    if(tasks.length > 1) {
+        let finalData = tasks;
+        if(req.query.sortByTime && req.query.sortByTime === 'true') {
+            finalData = DataOps.sortByTime(req.query.sortOrder);
+        }
+        if(req.query.filterCompleted && req.query.filterCompleted === 'true') {
+            finalData = DataOps.filterCompleted(req.query.completionStatus, finalData);
+        }
+        res.status(200).send(finalData);
+    } else {
+        res.status(200).send(tasks);
+    }
 })
 
 routes.get('/:id', (req, res) => {
@@ -64,6 +76,15 @@ routes.delete('/:id', (req, res) => {
         res.status(204).end();
     } else {
         res.status(404).send(validatedData);
+    }
+})
+
+routes.get('/priority/:level', (req, res) => {
+    const priorityTasks = DataOps.retrieveOnPriority(req.params.level);
+    if(priorityTasks.success) {
+        res.status(200).send(priorityTasks.data);
+    } else {
+        res.status(400).send(priorityTasks)
     }
 })
 

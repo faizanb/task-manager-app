@@ -14,8 +14,10 @@ class Validator {
     static #validateTaskProps(data) {
         return data && data.hasOwnProperty('name') &&
             data.hasOwnProperty('description') &&
-            data.hasOwnProperty('completed') &&
-            typeof data.completed === 'boolean'
+            (data.hasOwnProperty('completed') &&
+            typeof data.completed === 'boolean') &&
+            (data.hasOwnProperty('priority') &&
+            data.priority === 'low' || data.priority === 'medium' || data.priority === 'high')
         }
 
     // Class method that will invoked in routes for error handling for any CRUD operation
@@ -38,7 +40,10 @@ class Validator {
             case 'UPDATE':
                 let validateId = this.#validateTaskId(id);
                 if(validateId.success) {
-                    taskExists = ((validateId.data[0].name === data.name) && (validateId.data[0].description === data.description) && (validateId.data[0].completed === data.completed))
+                    taskExists = ((validateId.data[0].name === data.name) &&
+                        (validateId.data[0].description === data.description) &&
+                        (validateId.data[0].completed === data.completed) &&
+                        (validateId.data[0].priority === data.priority))
                     if(taskExists)
                         return {success: false, message: "Trying to modify same data. Please update your inputs!!", idExists: true};
                     return {success: true, idExists: true}; 

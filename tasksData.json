@@ -1,20 +1,34 @@
 [
     {
-        "id": "1",
-        "name": "assignment",
-        "description": "complete the assignment",
-        "completed": true
+        "id": "351j18bf2lja9iosx",
+        "name": "meal prep",
+        "description": "grocery and meal prep for the week",
+        "completed": true,
+        "priority": "high",
+        "createdAt": 1687626960656
     },
     {
-        "id": "2",
-        "name": "exercise",
-        "description": "exercise for 30 mins",
-        "completed": true
+        "id": "351j18bfwlja9jptu",
+        "name": "reading",
+        "description": "complete reading 10 pages",
+        "completed": false,
+        "priority": "low",
+        "createdAt": 1687627008641
     },
     {
-        "name": "new task 1",
-        "description": "this is new task 1",
-        "id": "351j189calj9zkdc0",
-        "completed": false
+        "id": "351j18bfwlja9kfbn",
+        "name": "exercising",
+        "description": "exercise for an hour",
+        "completed": true,
+        "priority": "high",
+        "createdAt": 1687627041683
+    },
+    {
+        "id": "351j18bh1lja9m2j8",
+        "name": "journalling",
+        "description": "journal events of the day",
+        "completed": true,
+        "priority": "medium",
+        "createdAt": 1687627118419
     }
 ]
