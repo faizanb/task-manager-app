@@ -1,5 +1,5 @@
 # task-manager-app
-Task Manager Application
+Node JS based RESTful APIs project for a task manager application
 
 ## Project Layout
     .
@@ -28,7 +28,7 @@ Application will start running on `localhost` port `3000` <br />
 
 API Endpoints
   * To retrieve all tasks from `tasksData.json` [http://localhost:3000/tasks](http://localhost:3000/tasks)
-  * To retrieve a specific task based on Id [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
+  * To retrieve a specific task based on ID [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
   * To sort tasks based on timestamp [http://localhost:3000/tasks?sortByTime=true&sortOrder=0](http://localhost:3000/tasks?sortByTime=true&sortOrder=0) <br />
     `sortOrder` can be `0` (for ascending) and `1` (for descending)
   * To filter on task completion status [http://localhost:3000/tasks?filterCompleted=true&completionStatus=true](http://localhost:3000/tasks?filterCompleted=true&completionStatus=true) <br />
@@ -51,7 +51,7 @@ Sample Payload
 
 ### PUT API
 
-API Endpoint to UPDATE a task [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
+API Endpoint to UPDATE a task by ID [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
 Sample Payload
 ```json
 {
@@ -64,4 +64,4 @@ Sample Payload
 
 ### DELETE API
 
-API Endpoint to DELETE a task [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
+API Endpoint to DELETE a task by ID [http://localhost:3000/tasks/:id] eg: [http://localhost:3000/tasks/351j18bfwlja9jptu](http://localhost:3000/tasks/351j18bfwlja9jptu)
