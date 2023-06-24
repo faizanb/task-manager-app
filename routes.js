@@ -25,7 +25,8 @@ routes.post('/', (req, res) => {
     const validatedData = Validator.validateTaskData('CREATE', req.body);
     if(validatedData.success) {
         const newTaskId = uniqid();
-        const newTask = { id: newTaskId, ...req.body };
+        const timeStamp = new Date().getTime();
+        const newTask = { id: newTaskId, ...req.body, createdAt: timeStamp };
         tasks.push(newTask);
         Files.writeSync(tasks);
         res.status(200).send({message: 'New task created successfully', success: true})
@@ -41,8 +42,8 @@ routes.post('/', (req, res) => {
 routes.put('/:id', (req, res) => {
     const validatedData = Validator.validateTaskData('UPDATE', req.body, req.params.id);
     if(validatedData.success) {
-        const updatedTask = { id: req.params.id, ...req.body };
         const taskIndex = tasks.findIndex(item => item.id == req.params.id);
+        const updatedTask = { id: req.params.id, ...req.body, createdAt: tasks[taskIndex].createdAt };
         tasks[taskIndex] = updatedTask;
         Files.writeSync(tasks);
         res.status(200).send({message: 'Task updated successfully', success: true})
